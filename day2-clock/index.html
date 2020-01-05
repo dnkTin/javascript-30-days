@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="clock">
+        <div class="clock-face">
+            <div class="hand hour-hand"></div>
+            <div class="hand min-hand"></div>
+            <div class="hand second-hand"></div>
+        </div>
+    </div>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            display: flex;
+            flex: 1;
+            min-height: 100vh;
+            align-items: center;
+
+        }
+
+        .clock {
+            width: 30rem;
+            height: 30rem;
+            border: 20px solid black;
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1),
+                inset 0 0 0 3px #EFEFEF,
+                inset 0 0 10px black,
+                0 0 10px rgba(0, 0, 0, 0.2);
+            margin: 50px auto;
+            position: relative;
+        }
+
+        .clock-face {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform: translateY(-3px);
+        }
+
+        .hand {
+            width: 50%;
+            height: 6px;
+            background: black;
+            position: absolute;
+            top: 50%;
+            transform-origin: 100%;
+            transform: rotate(90deg);
+            transition: all 0.05s;
+            transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+        }
+
+        .min-hand {
+            background-color: red;
+        }
+
+        .second-hand {
+            background-color: sandybrown;
+        }
+
+        .hour-hand {
+            background-color: green;
+        }
+    </style>
+    <script>
+        let secondHand = document.querySelector('.second-hand');
+        let minHand = document.querySelector('.min-hand');
+        let hourHand = document.querySelector('.hour-hand');
+        function setDate() {
+            let d = new Date();
+            let seconds = d.getSeconds();
+            // each second -> second-hand move 6 degrees but need plus 6 degrees cause we have interval delay
+            const secondsDegrees = ((seconds / 60) * 360) + 90 + 360 / 60;
+            secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+            // min-hand move 6 degrees to complete the clock
+            // at a moment we define the degree of min-hand by the current minute * 6 + the current second * 6
+            //  we also know that 1 second = 1/60 minute
+            const minDegrees = d.getMinutes() * 6 + seconds / 60 * 6 + 90;
+            minHand.style.transform = `rotate(${minDegrees}deg)`;
+
+
+            // hour hand = current hours  + minHand / 12
+            // minHand = 1/12 hour
+            const hourHandDegrees = (d.getHours()) / 12 * 360 + d.getMinutes() / 12 * 6 + 45;
+            console.log('day gio: ', hourHandDegrees);
+            hourHand.style.transform = `rotate(${hourHandDegrees}deg)`;
+        }
+        setDate();
+        setInterval(() => {
+            setDate()
+        }, 1000)
+    </script>
+</body>
+
+</html>
