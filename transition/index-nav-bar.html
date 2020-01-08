@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            display: flex;
+            flex: 1;
+            padding: 12px;
+            background-color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            padding: 16px 24px;
+            border: 1px solid #fff;
+            border-radius: 18px;
+            color: #fff;
+            width: 100px;
+            outline: 0;
+            text-align: center;
+            transition: all 1s ease-out;
+            transition-property: background-color;
+        }
+
+        a:hover {
+            color: #efefef;
+            background-color: blue;
+        }
+
+        a:not(:last-child) {
+            margin-right: 12px;
+        }
+
+        section {
+            height: 300px;
+            background-color: #ddd;
+        }
+
+        div#square {
+            height: 100px;
+            width: 100px;
+            background-color: red;
+            transition: transform 3s ease-out, background-color 2s ease;
+        }
+
+        section:hover div#square {
+            transform: translate(100px, 15px);
+            background-color: blue;
+        }
+
+        .minh-hoa div {
+            width: 150px;
+            padding: 16px;
+            background-color: orange;
+            white-space: pre-line;
+            overflow: hidden;
+        }
+
+        .minh-hoa div:not(:last-child) {
+            margin-bottom: 10px;
+        }
+
+        #tran1 {
+            transition: all 3s ease;
+        }
+
+        #tran2 {
+            transition: all 3s linear;
+        }
+
+        #tran3 {
+            transition: all 3s ease-in;
+        }
+
+        #tran4 {
+            transition: all 3s ease-out;
+        }
+
+        #tran5 {
+            transition: all 3s ease-in-out;
+        }
+
+        .minh-hoa:hover div {
+            width: 1000px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="">Home</a>
+        <a href="">Contact</a>
+        <a href="">About</a>
+        <a href="">Link</a>
+    </nav>
+
+    <section>
+        <div id="square">
+        </div>
+    </section>
+
+    <div class="minh-hoa" style="background: #333333">
+        <div id="tran1">with ease</div>
+        <div id="tran2">with linear</div>
+        <div id="tran3">with ease-in</div>
+        <div id="tran4">with ease-out</div>
+        <div id="tran5">with ease-in-out</div>
+    </div>
+</body>
+
+</html>

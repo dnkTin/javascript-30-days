@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Transition Practice</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <p>Click anywhere to move the ball</p>
+    <div id="foo"></div>
+    <script>
+        let ball = document.getElementById('foo');
+        console.log(ball);
+        document.addEventListener('click', (event) => {
+            console.log(event);
+            ball.style.transform = 'translateY(' + (event.clientY - 25) + 'px';
+            ball.style.transform += 'translateX(' + (event.clientX - 25) + 'px';
+        }, false);
+    </script>
+</body>
+
+</html>
